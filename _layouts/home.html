@@ -1,0 +1,19 @@
+---
+layout: default
+js: app.js
+---
+
+<div class="home">
+  <script>
+  var posts = [
+    {% for post in site.posts %}
+      {
+        "title": "{{ post.title }}",
+        "url": "{{ post.url }}",
+        "excerpt": {{ post.excerpt | strip_html | truncatewords: 50 | jsonify }}
+      }
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+  </script>
+</div>
