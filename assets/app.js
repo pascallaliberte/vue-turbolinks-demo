@@ -8517,12 +8517,13 @@
 
 	var shuffle = _knuthShuffle2.default.knuthShuffle; // <template>
 	//   <div>
-	//     <button @click="previousArticle">Previous</button>
-	//     <button @click="nextArticle">Next</button>
+	//     <button @click="showPrevious">Previous</button>
+	//     <button @click="showNext">Next</button>
 	//     <a :href="currentPost.url">
 	//       <h1>{{ currentPost.title }}</h1>
 	//       <p>{{ currentPost.excerpt }}</p>
 	//     </a>
+	//     <div>Next up: <strong>{{ nextPost.title }}</strong></div>
 	//   </div>
 	// </template>
 	//
@@ -8546,12 +8547,26 @@
 	    this.currentPostId = 0;
 	  },
 
-	  methods: {
-	    nextArticle: function nextArticle() {
-	      this.currentPostId = this.currentPostId == this.postsRandomized.length - 1 ? 0 : this.currentPostId + 1;
+	  computed: {
+	    nextPostId: function nextPostId() {
+	      return this.currentPostId == this.postsRandomized.length - 1 ? 0 : this.currentPostId + 1;
 	    },
-	    previousArticle: function previousArticle() {
-	      this.currentPostId = this.currentPostId == 0 ? this.postsRandomized.length - 1 : this.currentPostId - 1;
+	    previousPostId: function previousPostId() {
+	      return this.currentPostId == 0 ? this.postsRandomized.length - 1 : this.currentPostId - 1;
+	    },
+	    nextPost: function nextPost() {
+	      return this.postsRandomized[this.nextPostId];
+	    },
+	    previousPost: function previousPost() {
+	      return this.postsRandomized[this.previousPostId];
+	    }
+	  },
+	  methods: {
+	    showNext: function showNext() {
+	      this.currentPostId = this.nextPostId;
+	    },
+	    showPrevious: function showPrevious() {
+	      this.currentPostId = this.previousPostId;
 	    }
 	  },
 	  watch: {
@@ -8569,7 +8584,7 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n    <button @click=\"previousArticle\">Previous</button>\n    <button @click=\"nextArticle\">Next</button>\n    <a :href=\"currentPost.url\">\n      <h1>{{ currentPost.title }}</h1>\n      <p>{{ currentPost.excerpt }}</p>\n    </a>\n  </div>\n";
+	module.exports = "\n  <div>\n    <button @click=\"showPrevious\">Previous</button>\n    <button @click=\"showNext\">Next</button>\n    <a :href=\"currentPost.url\">\n      <h1>{{ currentPost.title }}</h1>\n      <p>{{ currentPost.excerpt }}</p>\n    </a>\n    <div>Next up: <strong>{{ nextPost.title }}</strong></div>\n  </div>\n";
 
 /***/ },
 /* 6 */

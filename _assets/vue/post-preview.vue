@@ -1,17 +1,17 @@
 <template>
   <div>
-    <button @click="previousArticle">Previous</button>
-    <button @click="nextArticle">Next</button>
+    <button @click="showPrevious">Previous</button>
+    <button @click="showNext">Next</button>
     <a :href="currentPost.url">
       <h1>{{ currentPost.title }}</h1>
       <p>{{ currentPost.excerpt }}</p>
     </a>
+    <div>Next up: <strong>{{ nextPost.title }}</strong></div>
   </div>
 </template>
 
 <script>
   import KnuthShuffle from 'knuth-shuffle'
-
   let shuffle = KnuthShuffle.knuthShuffle
 
   export default {
@@ -32,12 +32,26 @@
       this.postsRandomized = shuffle(this.posts.slice(0)) // makes a copy
       this.currentPostId = 0
     },
-    methods: {
-      nextArticle () {
-        this.currentPostId = (this.currentPostId == this.postsRandomized.length -1)? 0: this.currentPostId + 1
+    computed: {
+      nextPostId() {
+        return (this.currentPostId == this.postsRandomized.length -1)? 0: this.currentPostId + 1
       },
-      previousArticle() {
-        this.currentPostId = (this.currentPostId == 0)? this.postsRandomized.length -1: this.currentPostId - 1
+      previousPostId() {
+        return (this.currentPostId == 0)? this.postsRandomized.length -1: this.currentPostId - 1
+      },
+      nextPost() {
+        return this.postsRandomized[this.nextPostId]
+      },
+      previousPost() {
+        return this.postsRandomized[this.previousPostId]
+      }
+    },
+    methods: {
+      showNext () {
+        this.currentPostId = this.nextPostId
+      },
+      showPrevious() {
+        this.currentPostId = this.previousPostId
       }
     },
     watch: {
