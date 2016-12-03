@@ -25,6 +25,7 @@
     "webpack": "^1.12.2"
   },
   "dependencies": {
+    "knuth-shuffle": "^1.0.1",
     "vue": "^2.1.4"
   }
 }

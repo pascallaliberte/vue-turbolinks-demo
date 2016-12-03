@@ -10,6 +10,10 @@
 </template>
 
 <script>
+  import KnuthShuffle from 'knuth-shuffle'
+
+  let shuffle = KnuthShuffle.knuthShuffle
+
   export default {
     props: {
       posts: {
@@ -20,24 +24,26 @@
     data () {
       return {
         currentPostId: null,
-        currentPost: {}
+        currentPost: {},
+        postsRandomized: []
       }
     },
     created() {
+      this.postsRandomized = shuffle(this.posts.slice(0)) // makes a copy
       this.currentPostId = 0
     },
     methods: {
       nextArticle () {
-        this.currentPostId = (this.currentPostId == this.posts.length -1)? 0: this.currentPostId + 1
+        this.currentPostId = (this.currentPostId == this.postsRandomized.length -1)? 0: this.currentPostId + 1
       },
       previousArticle() {
-        this.currentPostId = (this.currentPostId == 0)? this.posts.length -1: this.currentPostId - 1
+        this.currentPostId = (this.currentPostId == 0)? this.postsRandomized.length -1: this.currentPostId - 1
       }
     },
     watch: {
       currentPostId (newVal, oldVal) {
-        if (this.posts[newVal] !== undefined) {
-          this.currentPost = this.posts[newVal]
+        if (this.postsRandomized[newVal] !== undefined) {
+          this.currentPost = this.postsRandomized[newVal]
         }
       }
     }

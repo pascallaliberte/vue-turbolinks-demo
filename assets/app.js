@@ -8501,14 +8501,21 @@
 
 /***/ },
 /* 4 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// <template>
+
+	var _knuthShuffle = __webpack_require__(6);
+
+	var _knuthShuffle2 = _interopRequireDefault(_knuthShuffle);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var shuffle = _knuthShuffle2.default.knuthShuffle; // <template>
 	//   <div>
 	//     <button @click="previousArticle">Previous</button>
 	//     <button @click="nextArticle">Next</button>
@@ -8530,25 +8537,27 @@
 	  data: function data() {
 	    return {
 	      currentPostId: null,
-	      currentPost: {}
+	      currentPost: {},
+	      postsRandomized: []
 	    };
 	  },
 	  created: function created() {
+	    this.postsRandomized = shuffle(this.posts.slice(0)); // makes a copy
 	    this.currentPostId = 0;
 	  },
 
 	  methods: {
 	    nextArticle: function nextArticle() {
-	      this.currentPostId = this.currentPostId == this.posts.length - 1 ? 0 : this.currentPostId + 1;
+	      this.currentPostId = this.currentPostId == this.postsRandomized.length - 1 ? 0 : this.currentPostId + 1;
 	    },
 	    previousArticle: function previousArticle() {
-	      this.currentPostId = this.currentPostId == 0 ? this.posts.length - 1 : this.currentPostId - 1;
+	      this.currentPostId = this.currentPostId == 0 ? this.postsRandomized.length - 1 : this.currentPostId - 1;
 	    }
 	  },
 	  watch: {
 	    currentPostId: function currentPostId(newVal, oldVal) {
-	      if (this.posts[newVal] !== undefined) {
-	        this.currentPost = this.posts[newVal];
+	      if (this.postsRandomized[newVal] !== undefined) {
+	        this.currentPost = this.postsRandomized[newVal];
 	      }
 	    }
 	  }
@@ -8561,6 +8570,42 @@
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div>\n    <button @click=\"previousArticle\">Previous</button>\n    <button @click=\"nextArticle\">Next</button>\n    <a :href=\"currentPost.url\">\n      <h1>{{ currentPost.title }}</h1>\n      <p>{{ currentPost.excerpt }}</p>\n    </a>\n  </div>\n";
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/*jshint -W054 */
+	(function (exports) {
+	  'use strict';
+
+	  // http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+	  function shuffle(array) {
+	    var currentIndex = array.length
+	      , temporaryValue
+	      , randomIndex
+	      ;
+
+	    // While there remain elements to shuffle...
+	    while (0 !== currentIndex) {
+
+	      // Pick a remaining element...
+	      randomIndex = Math.floor(Math.random() * currentIndex);
+	      currentIndex -= 1;
+
+	      // And swap it with the current element.
+	      temporaryValue = array[currentIndex];
+	      array[currentIndex] = array[randomIndex];
+	      array[randomIndex] = temporaryValue;
+	    }
+
+	    return array;
+	  }
+
+	  exports.knuthShuffle = shuffle;
+	}('undefined' !== typeof exports && exports || 'undefined' !== typeof window && window || global));
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ }
 /******/ ]);
