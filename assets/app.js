@@ -8509,10 +8509,14 @@
 	  value: true
 	});
 	// <template>
-	//   <a :href="currentPost.url">
-	//     <h1>{{ currentPost.title }}</h1>
-	//     <p>{{ currentPost.excerpt }}</p>
-	//   </a>
+	//   <div>
+	//     <button @click="previousArticle">Previous</button>
+	//     <button @click="nextArticle">Next</button>
+	//     <a :href="currentPost.url">
+	//       <h1>{{ currentPost.title }}</h1>
+	//       <p>{{ currentPost.excerpt }}</p>
+	//     </a>
+	//   </div>
 	// </template>
 	//
 	// <script>
@@ -8525,12 +8529,28 @@
 	  },
 	  data: function data() {
 	    return {
-	      currentPostId: 0,
+	      currentPostId: null,
 	      currentPost: {}
 	    };
 	  },
 	  created: function created() {
-	    this.currentPost = this.posts[this.currentPostId];
+	    this.currentPostId = 0;
+	  },
+
+	  methods: {
+	    nextArticle: function nextArticle() {
+	      this.currentPostId = this.currentPostId == this.posts.length - 1 ? 0 : this.currentPostId + 1;
+	    },
+	    previousArticle: function previousArticle() {
+	      this.currentPostId = this.currentPostId == 0 ? this.posts.length - 1 : this.currentPostId - 1;
+	    }
+	  },
+	  watch: {
+	    currentPostId: function currentPostId(newVal, oldVal) {
+	      if (this.posts[newVal] !== undefined) {
+	        this.currentPost = this.posts[newVal];
+	      }
+	    }
 	  }
 	};
 	// </script>
@@ -8540,7 +8560,7 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <a :href=\"currentPost.url\">\n    <h1>{{ currentPost.title }}</h1>\n    <p>{{ currentPost.excerpt }}</p>\n  </a>\n";
+	module.exports = "\n  <div>\n    <button @click=\"previousArticle\">Previous</button>\n    <button @click=\"nextArticle\">Next</button>\n    <a :href=\"currentPost.url\">\n      <h1>{{ currentPost.title }}</h1>\n      <p>{{ currentPost.excerpt }}</p>\n    </a>\n  </div>\n";
 
 /***/ }
 /******/ ]);
