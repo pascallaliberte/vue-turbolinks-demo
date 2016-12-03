@@ -14,7 +14,16 @@ module.exports = {
         loader: 'babel',
         // don't transform node_modules folder (which don't need to be compiled)
         exclude: /node_modules/
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue'
       }
     ]
+  },
+  vue: {
+    loaders: {
+      js: 'babel'
+    }
   }
 }
