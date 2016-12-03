@@ -4,6 +4,9 @@ js: app
 ---
 
 <div class="home">
+  <div id="post-preview">
+    <post-preview :posts="posts"></post-preview>
+  </div>
   <script>
   var posts = [
     {% for post in site.posts %}
@@ -16,4 +19,5 @@ js: app
     {% endfor %}
   ];
   </script>
+  <script src="/assets/app.js"></script>
 </div>
