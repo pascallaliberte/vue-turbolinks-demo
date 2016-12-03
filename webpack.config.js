@@ -1,7 +1,11 @@
+var path = require('path')
+var webpack = require('webpack')
+
 module.exports = {
   entry: './_assets/app.js',
   output: {
-    path: './assets',
+    path: path.resolve(__dirname, './assets'),
+    publicPath: '/assets/',
     filename: 'app.js'
   },
   module: {
@@ -25,5 +29,31 @@ module.exports = {
     loaders: {
       js: 'babel'
     }
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.common.js'
+    }
   }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
+  // http://vue-loader.vuejs.org/en/workflow/production.html
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ])
 }
