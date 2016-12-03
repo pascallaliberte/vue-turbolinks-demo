@@ -9,18 +9,22 @@
   "author": "Pascal Laliberté <pascal@pascallaliberte.me>",
   "license": "ISC",
   "devDependencies": {
-    "coffee-loader": "^0.7.2",
-    "coffee-script": "^1.11.1",
     "babel-core": "^6.1.2",
     "babel-loader": "^6.1.0",
     "babel-plugin-transform-runtime": "^6.1.2",
     "babel-preset-es2015": "^6.1.2",
     "babel-preset-stage-0": "^6.1.2",
     "babel-runtime": "^5.8.0",
-    "webpack": "^1.12.2",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.11.1",
     "css-loader": "^0.23.0",
     "style-loader": "^0.13.0",
+    "vue-hot-reload-api": "^1.3.3",
+    "vue-html-loader": "^1.0.0",
     "vue-loader": "^7.3.0",
-    "vue-html-loader": "^1.0.0"
+    "webpack": "^1.12.2"
+  },
+  "dependencies": {
+    "vue": "^2.1.4"
   }
 }
