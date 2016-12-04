@@ -5,12 +5,18 @@ import VueTurbolinks from './vue/mixins/vue-turbolinks.js'
 
 Vue.mixin(VueTurbolinks)
 
-new Vue({
-  el: '#post-preview',
-  data: {
-    posts: window.posts
-  },
-  components: {
-    PostPreview
-  }
+window.addEventListener('load-post-preview', function (e) {
+  new Vue({
+    el: '#post-preview',
+    data: {
+      posts: window.posts
+    },
+    components: {
+      PostPreview
+    }
+  })
 })
+
+window.dispatchEvent(new CustomEvent('load-post-preview', {
+  detail: {}
+}))
