@@ -2,24 +2,31 @@
   <div>
     <button @click="showPrevious">Previous</button>
     <button @click="showNext">Next</button>
-    <a :href="currentPost.url">
-      <h1>{{ currentPost.title }}</h1>
-      <p>{{ currentPost.excerpt }}</p>
-    </a>
+    <post-link :post="currentPost"></post-link>
     <div>Next up: <strong>{{ nextPost.title }}</strong></div>
   </div>
 </template>
 
 <script>
+  import Vue from 'vue'
   import KnuthShuffle from 'knuth-shuffle'
+  import CircularJSON from 'circular-json'
+
   let shuffle = KnuthShuffle.knuthShuffle
 
+  import PostLink from './post-link.vue'
+
   export default {
+    components: {
+      PostLink
+    },
     props: {
       posts: {
         type: Array,
         required: true
       }
+    },
+    init () {
     },
     data () {
       return {
@@ -29,8 +36,13 @@
       }
     },
     created() {
+      // this.$set(this.originalElOuterHTML, 'originalElOuterHTML', this.el.outerHTML)
       this.postsRandomized = shuffle(this.posts.slice(0)) // makes a copy
       this.currentPostId = 0
+    },
+    beforeMount() {
+    },
+    mounted() {
     },
     computed: {
       nextPostId() {

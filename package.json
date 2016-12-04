@@ -25,7 +25,9 @@
     "webpack": "^1.12.2"
   },
   "dependencies": {
+    "circular-json": "^0.3.1",
     "knuth-shuffle": "^1.0.1",
-    "vue": "^2.1.4"
+    "vue": "^2.1.4",
+    "vue-debug": "0.0.1"
   }
 }
