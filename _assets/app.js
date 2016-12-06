@@ -5,9 +5,14 @@ import VueTurbolinks from './vue/mixins/vue-turbolinks.js'
 
 Vue.mixin(VueTurbolinks)
 
-window.addEventListener('load-post-preview', function (e) {
-  new Vue({
-    el: '#post-preview',
+let postPreviewEl = "#post-preview"
+
+document.addEventListener("turbolinks:load", function() {
+  if (!document.querySelector(postPreviewEl)) {
+    return
+  }
+  window.postPreview = new Vue({
+    el: postPreviewEl,
     data: {
       posts: window.posts
     },
@@ -17,6 +22,11 @@ window.addEventListener('load-post-preview', function (e) {
   })
 })
 
-window.dispatchEvent(new CustomEvent('load-post-preview', {
-  detail: {}
-}))
+document.addEventListener("turbolinks:before-cache", function() {
+  if (!document.querySelector(postPreviewEl)) {
+    return
+  }
+  if (window.postPreview) {
+    window.postPreview.$destroy()
+  }
+})

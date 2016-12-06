@@ -46,15 +46,15 @@
 
 	'use strict';
 
-	var _vue = __webpack_require__(4);
+	var _vue = __webpack_require__(1);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _postPreview = __webpack_require__(6);
+	var _postPreview = __webpack_require__(3);
 
 	var _postPreview2 = _interopRequireDefault(_postPreview);
 
-	var _vueTurbolinks = __webpack_require__(17);
+	var _vueTurbolinks = __webpack_require__(14);
 
 	var _vueTurbolinks2 = _interopRequireDefault(_vueTurbolinks);
 
@@ -62,9 +62,14 @@
 
 	_vue2.default.mixin(_vueTurbolinks2.default);
 
-	window.addEventListener('load-post-preview', function (e) {
-	  new _vue2.default({
-	    el: '#post-preview',
+	var postPreviewEl = "#post-preview";
+
+	document.addEventListener("turbolinks:load", function () {
+	  if (!document.querySelector(postPreviewEl)) {
+	    return;
+	  }
+	  window.postPreview = new _vue2.default({
+	    el: postPreviewEl,
 	    data: {
 	      posts: window.posts
 	    },
@@ -74,34 +79,17 @@
 	  });
 	});
 
-	window.dispatchEvent(new CustomEvent('load-post-preview', {
-	  detail: {}
-	}));
+	document.addEventListener("turbolinks:before-cache", function () {
+	  if (!document.querySelector(postPreviewEl)) {
+	    return;
+	  }
+	  if (window.postPreview) {
+	    window.postPreview.$destroy();
+	  }
+	});
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(2), __esModule: true };
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var core = __webpack_require__(3);
-	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
-	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
-	};
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '1.2.6'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process, global) {/*!
@@ -8323,10 +8311,10 @@
 
 	module.exports = Vue$3;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), (function() { return this; }())))
 
 /***/ },
-/* 5 */
+/* 2 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -8512,12 +8500,12 @@
 
 
 /***/ },
-/* 6 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(7)
-	__vue_template__ = __webpack_require__(16)
+	__vue_script__ = __webpack_require__(4)
+	__vue_template__ = __webpack_require__(13)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -8534,7 +8522,7 @@
 	})()}
 
 /***/ },
-/* 7 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8543,19 +8531,19 @@
 	  value: true
 	});
 
-	var _vue = __webpack_require__(4);
+	var _vue = __webpack_require__(1);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
-	var _knuthShuffle = __webpack_require__(8);
+	var _knuthShuffle = __webpack_require__(5);
 
 	var _knuthShuffle2 = _interopRequireDefault(_knuthShuffle);
 
-	var _circularJson = __webpack_require__(9);
+	var _circularJson = __webpack_require__(6);
 
 	var _circularJson2 = _interopRequireDefault(_circularJson);
 
-	var _postLink = __webpack_require__(10);
+	var _postLink = __webpack_require__(7);
 
 	var _postLink2 = _interopRequireDefault(_postLink);
 
@@ -8631,7 +8619,7 @@
 	//
 
 /***/ },
-/* 8 */
+/* 5 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*jshint -W054 */
@@ -8667,7 +8655,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 9 */
+/* 6 */
 /***/ function(module, exports) {
 
 	/*!
@@ -8857,12 +8845,12 @@
 	this.parse = parseRecursion;
 
 /***/ },
-/* 10 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(11)
-	__vue_template__ = __webpack_require__(15)
+	__vue_script__ = __webpack_require__(8)
+	__vue_template__ = __webpack_require__(12)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -8879,7 +8867,7 @@
 	})()}
 
 /***/ },
-/* 11 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -8888,7 +8876,7 @@
 	  value: true
 	});
 
-	var _postSummary = __webpack_require__(12);
+	var _postSummary = __webpack_require__(9);
 
 	var _postSummary2 = _interopRequireDefault(_postSummary);
 
@@ -8920,12 +8908,12 @@
 	// <script>
 
 /***/ },
-/* 12 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(13)
-	__vue_template__ = __webpack_require__(14)
+	__vue_script__ = __webpack_require__(10)
+	__vue_template__ = __webpack_require__(11)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -8942,7 +8930,7 @@
 	})()}
 
 /***/ },
-/* 13 */
+/* 10 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -8974,25 +8962,25 @@
 	//
 
 /***/ },
-/* 14 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div>\n    <h1>{{ post.title }}</h1>\n    <p>{{ post.excerpt }}</p>\n  </div>\n";
 
 /***/ },
-/* 15 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <a :href=\"post.url\">\n    <post-summary :post=\"post\"></post-summary>\n  </a>\n";
 
 /***/ },
-/* 16 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = "\n  <div>\n    <button @click=\"showPrevious\">Previous</button>\n    <button @click=\"showNext\">Next</button>\n    <post-link :post=\"currentPost\"></post-link>\n    <div>Next up: <strong>{{ nextPost.title }}</strong></div>\n  </div>\n";
 
 /***/ },
-/* 17 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9001,7 +8989,7 @@
 	  value: true
 	});
 
-	var _stringify = __webpack_require__(1);
+	var _stringify = __webpack_require__(15);
 
 	var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -9013,7 +9001,7 @@
 
 	var _getIterator3 = _interopRequireDefault(_getIterator2);
 
-	var _vue = __webpack_require__(4);
+	var _vue = __webpack_require__(1);
 
 	var _vue2 = _interopRequireDefault(_vue);
 
@@ -9117,6 +9105,28 @@
 	};
 
 /***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(16), __esModule: true };
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var core = __webpack_require__(17);
+	module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+	  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
+	};
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '1.2.6'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -9127,7 +9137,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(20);
-	module.exports = __webpack_require__(3).Object.keys;
+	module.exports = __webpack_require__(17).Object.keys;
 
 /***/ },
 /* 20 */
@@ -9168,7 +9178,7 @@
 
 	// most Object methods by ES6 should accept primitives
 	var $export = __webpack_require__(24)
-	  , core    = __webpack_require__(3)
+	  , core    = __webpack_require__(17)
 	  , fails   = __webpack_require__(28);
 	module.exports = function(KEY, exec){
 	  var fn  = (core.Object || {})[KEY] || Object[KEY]
@@ -9182,7 +9192,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(25)
-	  , core      = __webpack_require__(3)
+	  , core      = __webpack_require__(17)
 	  , ctx       = __webpack_require__(26)
 	  , PROTOTYPE = 'prototype';
 
@@ -9664,7 +9674,7 @@
 
 	var anObject = __webpack_require__(56)
 	  , get      = __webpack_require__(58);
-	module.exports = __webpack_require__(3).getIterator = function(it){
+	module.exports = __webpack_require__(17).getIterator = function(it){
 	  var iterFn = get(it);
 	  if(typeof iterFn != 'function')throw TypeError(it + ' is not iterable!');
 	  return anObject(iterFn.call(it));
@@ -9695,7 +9705,7 @@
 	var classof   = __webpack_require__(59)
 	  , ITERATOR  = __webpack_require__(49)('iterator')
 	  , Iterators = __webpack_require__(35);
-	module.exports = __webpack_require__(3).getIteratorMethod = function(it){
+	module.exports = __webpack_require__(17).getIteratorMethod = function(it){
 	  if(it != undefined)return it[ITERATOR]
 	    || it['@@iterator']
 	    || Iterators[classof(it)];
