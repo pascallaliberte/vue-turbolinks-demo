@@ -5,7 +5,7 @@ import VueTurbolinks from './vue/mixins/vue-turbolinks.js'
 
 Vue.mixin(VueTurbolinks)
 
-let postPreviewEl = "#post-preview"
+let postPreviewEl = "#post-preview-app"
 
 initPostPreview()
 
