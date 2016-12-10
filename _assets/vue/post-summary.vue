@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="post-preview-summary">
     <h1 class="post-preview-title">{{ post.title }}</h1>
-    <p class="post-preview-excerpt">{{ post.excerpt }}</p>
+    <p ref="excerpt" class="post-preview-excerpt">{{ post.excerpt }}</p>
   </div>
 </template>
 <script>
+
 export default {
   props: {
     post: {

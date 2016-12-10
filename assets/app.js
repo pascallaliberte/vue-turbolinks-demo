@@ -8959,12 +8959,13 @@
 	  value: true
 	});
 	// <template>
-	//   <div>
+	//   <div class="post-preview-summary">
 	//     <h1 class="post-preview-title">{{ post.title }}</h1>
-	//     <p class="post-preview-excerpt">{{ post.excerpt }}</p>
+	//     <p ref="excerpt" class="post-preview-excerpt">{{ post.excerpt }}</p>
 	//   </div>
 	// </template>
 	// <script>
+
 	exports.default = {
 	  props: {
 	    post: {
@@ -8985,7 +8986,7 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n    <h1 class=\"post-preview-title\">{{ post.title }}</h1>\n    <p class=\"post-preview-excerpt\">{{ post.excerpt }}</p>\n  </div>\n";
+	module.exports = "\n  <div class=\"post-preview-summary\">\n    <h1 class=\"post-preview-title\">{{ post.title }}</h1>\n    <p ref=\"excerpt\" class=\"post-preview-excerpt\">{{ post.excerpt }}</p>\n  </div>\n";
 
 /***/ },
 /* 12 */
