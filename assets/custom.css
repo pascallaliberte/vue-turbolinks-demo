@@ -4,8 +4,7 @@ body {
 
 .post-preview-wrapper {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
+  flex-direction: column;
 }
 
 .post-preview {
@@ -14,8 +13,11 @@ body {
   padding: 47px 30px 20px;
   font-family: serif;
   width: 250px;
-  height: 350px;
+  height: 300px;
   color: #333;
+  margin: 0 auto 1em;
+
+  box-sizing: border-box;
 
   position: relative;
   overflow: hidden;
@@ -67,7 +69,11 @@ body {
   flex-grow: 1;
   flex-shrink: 0;
   flex-basis: 0;
-  margin-left: 2em;
+  text-align: right;
+  width: 250px;
+
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .post-preview-summary {
@@ -145,4 +151,34 @@ body {
 
 .post-preview-next:hover {
   background: #ddd;
+}
+
+@media only screen and (min-width: 375px) {
+  .post-preview {
+    width: 300px;
+    height: 400px;
+  }
+
+  .post-preview-nav {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .post-preview-wrapper {
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .post-preview {
+    width: 350px;
+    height: 450px;
+    margin: 0;
+  }
+
+  .post-preview-nav {
+    text-align: left;
+    width: auto;
+    margin: 0;
+    margin-left: 2em;
+  }
 }
