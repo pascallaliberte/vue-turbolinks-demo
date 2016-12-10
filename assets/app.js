@@ -62,7 +62,7 @@
 
 	_vue2.default.mixin(_vueTurbolinks2.default);
 
-	var postPreviewEl = "#post-preview";
+	var postPreviewEl = "#post-preview-app";
 
 	initPostPreview();
 
@@ -8570,11 +8570,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var shuffle = _knuthShuffle2.default.knuthShuffle; // <template>
-	//   <div>
-	//     <button @click="showPrevious">Previous</button>
-	//     <button @click="showNext">Next</button>
+	//   <div class="post-preview-wrapper">
+	//     <button @click="showPrevious" class="post-preview-previous">Go Back</button>
+	//     <button @click="showNext" class="post-preview-next">Next One</button>
 	//     <post-link :post="currentPost"></post-link>
-	//     <div>Next up: <strong>{{ nextPost.title }}</strong></div>
+	//     <div class="post-preview-next-title">Next up: <strong>{{ nextPost.title }}</strong></div>
 	//   </div>
 	// </template>
 	//
@@ -8921,7 +8921,7 @@
 	// </script>
 	//
 	// <template>
-	//   <a :href="post.url">
+	//   <a :href="post.url" class="post-preview">
 	//     <post-summary :post="post"></post-summary>
 	//   </a>
 	// </template>
@@ -8960,8 +8960,8 @@
 	});
 	// <template>
 	//   <div>
-	//     <h1>{{ post.title }}</h1>
-	//     <p>{{ post.excerpt }}</p>
+	//     <h1 class="post-preview-title">{{ post.title }}</h1>
+	//     <p class="post-preview-excerpt">{{ post.excerpt }}</p>
 	//   </div>
 	// </template>
 	// <script>
@@ -8985,19 +8985,19 @@
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n    <h1>{{ post.title }}</h1>\n    <p>{{ post.excerpt }}</p>\n  </div>\n";
+	module.exports = "\n  <div>\n    <h1 class=\"post-preview-title\">{{ post.title }}</h1>\n    <p class=\"post-preview-excerpt\">{{ post.excerpt }}</p>\n  </div>\n";
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <a :href=\"post.url\">\n    <post-summary :post=\"post\"></post-summary>\n  </a>\n";
+	module.exports = "\n  <a :href=\"post.url\" class=\"post-preview\">\n    <post-summary :post=\"post\"></post-summary>\n  </a>\n";
 
 /***/ },
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div>\n    <button @click=\"showPrevious\">Previous</button>\n    <button @click=\"showNext\">Next</button>\n    <post-link :post=\"currentPost\"></post-link>\n    <div>Next up: <strong>{{ nextPost.title }}</strong></div>\n  </div>\n";
+	module.exports = "\n  <div class=\"post-preview-wrapper\">\n    <button @click=\"showPrevious\" class=\"post-preview-previous\">Go Back</button>\n    <button @click=\"showNext\" class=\"post-preview-next\">Next One</button>\n    <post-link :post=\"currentPost\"></post-link>\n    <div class=\"post-preview-next-title\">Next up: <strong>{{ nextPost.title }}</strong></div>\n  </div>\n";
 
 /***/ },
 /* 14 */

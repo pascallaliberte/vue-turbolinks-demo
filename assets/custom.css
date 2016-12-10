@@ -1,0 +1,37 @@
+body {
+  font-family: 'futura-pt', 'Helvetice Neue', 'Helvetica', sans-serif;
+}
+
+.post-preview {
+  border-radius: 6px;
+  border: 5px solid #333;
+  padding: 47px 30px 30px;
+  font-family: serif;
+  display: block;
+  width: 250px;
+  height: 400px;
+  color: #333;
+}
+.post-preview:visited {
+  color: #333;
+}
+.post-preview:hover {
+  text-decoration: none;
+}
+
+.post-preview-title {
+  font-family: 'kepler-std-display', serif;
+  line-height: 1;
+  font-size: 30px;
+}
+.post-preview-excerpt {
+  font-family: 'kepler-std', serif;
+  line-height: 1.25;
+  font-size: 20px;
+  text-overflow: ellipsis;
+}
+
+.post-preview-next {
+  border-radius: 2px;
+  background: #eee;
+}

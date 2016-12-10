@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.excerpt }}</p>
+    <h1 class="post-preview-title">{{ post.title }}</h1>
+    <p class="post-preview-excerpt">{{ post.excerpt }}</p>
   </div>
 </template>
 <script>

@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <button @click="showPrevious">Previous</button>
-    <button @click="showNext">Next</button>
+  <div class="post-preview-wrapper">
+    <button @click="showPrevious" class="post-preview-previous">Go Back</button>
+    <button @click="showNext" class="post-preview-next">Next One</button>
     <post-link :post="currentPost"></post-link>
-    <div>Next up: <strong>{{ nextPost.title }}</strong></div>
+    <div class="post-preview-next-title">Next up: <strong>{{ nextPost.title }}</strong></div>
   </div>
 </template>
 

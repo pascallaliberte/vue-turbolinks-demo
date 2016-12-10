@@ -1,5 +1,5 @@
 <template>
-  <a :href="post.url">
+  <a :href="post.url" class="post-preview">
     <post-summary :post="post"></post-summary>
   </a>
 </template>
