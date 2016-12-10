@@ -28,16 +28,26 @@ body {
   flex-basis: 100%;
 }
 
-.post-preview-title {
+.post, .post-preview-excerpt {
+  font-family: 'kepler-std', serif;
+}
+
+.post-title, .post-preview-title {
   font-family: 'kepler-std-display', serif;
   line-height: 1;
   font-size: 30px;
+}
+
+.post-title {
+  font-size: 40px;
+}
+
+.post-preview-title {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
 }
 .post-preview-excerpt {
-  font-family: 'kepler-std', serif;
   line-height: 1.25;
   font-size: 20px;
   overflow-y: hidden;
