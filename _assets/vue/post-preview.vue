@@ -1,9 +1,11 @@
 <template>
   <div class="post-preview-wrapper">
-    <button @click="showPrevious" class="post-preview-previous">Go Back</button>
-    <button @click="showNext" class="post-preview-next">Next One</button>
     <post-link :post="currentPost"></post-link>
-    <div class="post-preview-next-title">Next up: <strong>{{ nextPost.title }}</strong></div>
+    <div class="post-preview-nav">
+      <button @click="showPrevious" class="post-preview-previous">Go Back</button>
+      <button @click="showNext" class="post-preview-next">Next One</button>
+      <div class="post-preview-next-title">Next up: <strong>{{ nextPost.title }}</strong></div>
+    </div>
   </div>
 </template>
 

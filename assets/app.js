@@ -8571,10 +8571,12 @@
 
 	var shuffle = _knuthShuffle2.default.knuthShuffle; // <template>
 	//   <div class="post-preview-wrapper">
-	//     <button @click="showPrevious" class="post-preview-previous">Go Back</button>
-	//     <button @click="showNext" class="post-preview-next">Next One</button>
 	//     <post-link :post="currentPost"></post-link>
-	//     <div class="post-preview-next-title">Next up: <strong>{{ nextPost.title }}</strong></div>
+	//     <div class="post-preview-nav">
+	//       <button @click="showPrevious" class="post-preview-previous">Go Back</button>
+	//       <button @click="showNext" class="post-preview-next">Next One</button>
+	//       <div class="post-preview-next-title">Next up: <strong>{{ nextPost.title }}</strong></div>
+	//     </div>
 	//   </div>
 	// </template>
 	//
@@ -8998,7 +9000,7 @@
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"post-preview-wrapper\">\n    <button @click=\"showPrevious\" class=\"post-preview-previous\">Go Back</button>\n    <button @click=\"showNext\" class=\"post-preview-next\">Next One</button>\n    <post-link :post=\"currentPost\"></post-link>\n    <div class=\"post-preview-next-title\">Next up: <strong>{{ nextPost.title }}</strong></div>\n  </div>\n";
+	module.exports = "\n  <div class=\"post-preview-wrapper\">\n    <post-link :post=\"currentPost\"></post-link>\n    <div class=\"post-preview-nav\">\n      <button @click=\"showPrevious\" class=\"post-preview-previous\">Go Back</button>\n      <button @click=\"showNext\" class=\"post-preview-next\">Next One</button>\n      <div class=\"post-preview-next-title\">Next up: <strong>{{ nextPost.title }}</strong></div>\n    </div>\n  </div>\n";
 
 /***/ },
 /* 14 */
