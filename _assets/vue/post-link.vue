@@ -1,5 +1,5 @@
 <template>
-  <a :href="post.url" class="post-preview">
+  <a :href="url" class="post-preview">
     <post-summary :post="post"></post-summary>
   </a>
 </template>
@@ -13,6 +13,15 @@ export default {
     post: {
       type: Object,
       required: true
+    },
+    baseurl: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    url () {
+      return this.baseurl + this.post.url
     }
   },
   data () {

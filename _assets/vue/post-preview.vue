@@ -1,6 +1,6 @@
 <template>
   <div class="post-preview-wrapper">
-    <post-link :post="currentPost"></post-link>
+    <post-link :post="currentPost" :baseurl="baseurl"></post-link>
     <div class="post-preview-nav">
       <button @click="showPrevious" class="post-preview-previous">Go Back</button>
       <button @click="showNext" class="post-preview-next">Next One</button>
@@ -26,6 +26,10 @@
       posts: {
         type: Array,
         required: true
+      },
+      baseurl: {
+        type: String,
+        default: ''
       }
     },
     init () {

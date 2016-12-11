@@ -8571,7 +8571,7 @@
 
 	var shuffle = _knuthShuffle2.default.knuthShuffle; // <template>
 	//   <div class="post-preview-wrapper">
-	//     <post-link :post="currentPost"></post-link>
+	//     <post-link :post="currentPost" :baseurl="baseurl"></post-link>
 	//     <div class="post-preview-nav">
 	//       <button @click="showPrevious" class="post-preview-previous">Go Back</button>
 	//       <button @click="showNext" class="post-preview-next">Next One</button>
@@ -8589,6 +8589,10 @@
 	    posts: {
 	      type: Array,
 	      required: true
+	    },
+	    baseurl: {
+	      type: String,
+	      default: ''
 	    }
 	  },
 	  init: function init() {},
@@ -8912,6 +8916,15 @@
 	    post: {
 	      type: Object,
 	      required: true
+	    },
+	    baseurl: {
+	      type: String,
+	      default: ''
+	    }
+	  },
+	  computed: {
+	    url: function url() {
+	      return this.baseurl + this.post.url;
 	    }
 	  },
 	  data: function data() {
@@ -8923,7 +8936,7 @@
 	// </script>
 	//
 	// <template>
-	//   <a :href="post.url" class="post-preview">
+	//   <a :href="url" class="post-preview">
 	//     <post-summary :post="post"></post-summary>
 	//   </a>
 	// </template>
@@ -8994,13 +9007,13 @@
 /* 12 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <a :href=\"post.url\" class=\"post-preview\">\n    <post-summary :post=\"post\"></post-summary>\n  </a>\n";
+	module.exports = "\n  <a :href=\"url\" class=\"post-preview\">\n    <post-summary :post=\"post\"></post-summary>\n  </a>\n";
 
 /***/ },
 /* 13 */
 /***/ function(module, exports) {
 
-	module.exports = "\n  <div class=\"post-preview-wrapper\">\n    <post-link :post=\"currentPost\"></post-link>\n    <div class=\"post-preview-nav\">\n      <button @click=\"showPrevious\" class=\"post-preview-previous\">Go Back</button>\n      <button @click=\"showNext\" class=\"post-preview-next\">Next One</button>\n      <div class=\"post-preview-next-title\">Next up: <strong>{{ nextPost.title }}</strong></div>\n    </div>\n  </div>\n";
+	module.exports = "\n  <div class=\"post-preview-wrapper\">\n    <post-link :post=\"currentPost\" :baseurl=\"baseurl\"></post-link>\n    <div class=\"post-preview-nav\">\n      <button @click=\"showPrevious\" class=\"post-preview-previous\">Go Back</button>\n      <button @click=\"showNext\" class=\"post-preview-next\">Next One</button>\n      <div class=\"post-preview-next-title\">Next up: <strong>{{ nextPost.title }}</strong></div>\n    </div>\n  </div>\n";
 
 /***/ },
 /* 14 */
