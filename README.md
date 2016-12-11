@@ -16,7 +16,7 @@ There's one major hurdle in making them work together. Since Turbolinks replaces
 
 So this demo uses one technique in action: [a mixin is used to upgrade all Vue.js components to save their state][mixin] right before Turbolinks goes to the next page. On page restores, the components get re-built from scratch, and get their saved-state loaded again. This happens really quickly, and you don't notice that components get re-built from scratch.
 
-[mixin]: ./blob/master/_assets/vue/mixins/vue-turbolinks.js
+[mixin]: ./_assets/vue/mixins/vue-turbolinks.js
 
 ## The demo: An app to show a random article from my reading list
 
