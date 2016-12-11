@@ -29,7 +29,7 @@ Some more details:
 * Turbolinks is loaded on every page of the app
 * The Vue.js app is loaded when a `turbolinks:load` event is fired. That's detailed in the `_assets/app.js` page
 * `app.js` is also loaded on all pages of the site, so that if you come in through an full article page and click a link to go back to the home page, the home page's app gets built (without any information on the original state to load back, of course)
-* The app makes use of four nested vue.js components, just to make the point that they all get rebuilt from their previous state, and each get re-built exactly as they were.
+* The app makes use of three nested vue.js components plus the original vue instance, just to make the point that they all get rebuilt from their previous state, and each get re-built exactly as they were.
 * The mixin saves the state in a large attribute (`turbolinks-state`) on the original HTML element that was  used to build the original vue.js instance. Just before Turbolinks saves the body DOM in the restore cache, the original HTML element is reverted back in the DOM, and the `turbolinks-state` attribute is applied to it. This means that if your Vue.js components have large data sets, that attribute will be huge. So that might be an issue.
 
 ## Who this is best for
