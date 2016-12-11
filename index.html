@@ -9,9 +9,14 @@ layout: default
   <div id="post-preview-app">
     <post-preview :posts="posts"></post-preview>
   </div>
-  <p class="intro-app-bottom">
-    
-  </p>
+  <div class="intro-app-bottom">
+    <h1 class="intro-heading">How this works</h1>
+    <p>This small app demonstrates how to get <a href="https://github.com/turbolinks/turbolinks">Turbolinks</a> to work with <a href="https://vuejs.org">Vue.js</a>. The random article picker above is built in Vue.js. Clicking on an article preview brings you to the full article, at another URL, and Turbolinks powers the quick transition to that page.</p>
+    <p>So far, so good. Normally, that would work fine without anything special. But upon clicking the Back button on that article to come back here, you'd normally get greeted with a random article picker that no longer works. This is because Turbolinks handles page changes by replacing the DOM of the body. Since Vue.js hooks up a bunch of listeners in the DOM, those all get wiped out on restores.</p>
+    <p><a href="#">The fix: a Vue.js mixin saves the state of all of the components</a> right before Turbolinks goes to the new page, and re-builds the components on return -- from scratch, and with the state of each component restored as it was.</p>
+    <p>To learn more about this trick, <a href="#">read the README for this demo on GitHub</a>. For an intro of Turbolinks and Vue.js, and an intro on the trick, check out the <a href="https://speakerdeck.com/pascallaliberte/making-turbolinks-work-with-vue-dot-js-fast-server-generated-pages-with-reactive-front-end-components">presentation I gave at Ottawa Ruby on Sept 27, 2016</a>.</p>
+    <p>Hope this helps,<br><a href="http://pascallaliberte.me">Pascal Laliberté</a></p>
+  </div>
   <script>
   var posts = [
     {% for post in site.posts %}

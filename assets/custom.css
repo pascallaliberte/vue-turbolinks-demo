@@ -175,6 +175,17 @@ body {
   margin: -10px auto 10px;
 }
 
+.intro-app-bottom {
+  background-color: #eee;
+  margin: 1em -15px -30px;
+  padding: 1em 15px 2em;
+}
+
+.intro-heading {
+  font-size: 1.4em;
+  text-align: center;
+}
+
 @media only screen and (min-width: 375px) {
   .post-preview {
     width: 300px;
@@ -216,5 +227,12 @@ body {
     width: auto;
     margin: 0;
     margin-left: 2em;
+  }
+
+  .intro-app-bottom {
+    max-width: 500px;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
