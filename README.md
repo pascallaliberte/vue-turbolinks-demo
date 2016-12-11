@@ -3,6 +3,9 @@
 * [Turbolinks][turbolinks] is a javascript utility to speed up clicking between server-side generated pages.
 * [Vue.js][vuejs] is a small-yet-mighty javascript framework for building interactive UIs for the browser.
 
+[turbolinks]: https://github.com/turbolinks/turbolinks
+[vuejs]: https://vuejs.org
+
 I like them both because they're small, thoughtfully made, and they stand against the big client-side frameworks.
 
 ## Making them work together
