@@ -2,6 +2,14 @@ body {
   font-family: 'futura-pt', 'Helvetice Neue', 'Helvetica', sans-serif;
 }
 
+.site-header {
+  text-align: center;
+}
+
+.site-title {
+  float: none;
+}
+
 .post-preview-wrapper {
   display: flex;
   flex-direction: column;
@@ -151,6 +159,11 @@ body {
 
 .post-preview-next:hover {
   background: #ddd;
+}
+
+.post-preview-next-title {
+  line-height: 1.2;
+  margin-top: 0.5em;
 }
 
 .intro-app-top {
