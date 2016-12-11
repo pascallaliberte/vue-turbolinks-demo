@@ -181,6 +181,12 @@ body {
   padding: 1em 15px 2em;
 }
 
+.intro-app-post {
+  background-color: #eee;
+  margin: 1em -15px 1em;
+  padding: 1em 15px 1em;
+}
+
 .intro-heading {
   font-size: 1.4em;
   text-align: center;
