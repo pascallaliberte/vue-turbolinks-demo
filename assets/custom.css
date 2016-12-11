@@ -91,7 +91,7 @@ body {
 .post-title, .post-preview-title {
   font-family: 'kepler-std-display', serif;
   line-height: 1;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .post-title {
@@ -105,7 +105,7 @@ body {
 }
 .post-preview-excerpt {
   line-height: 1.25;
-  font-size: 20px;
+  font-size: 16px;
   overflow-y: hidden;
   flex-grow: 1;
   flex-shrink: 1;
@@ -153,15 +153,38 @@ body {
   background: #ddd;
 }
 
+.intro-app-top {
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+  color: #777;
+  max-width: 80%;
+  margin: -10px auto 10px;
+}
+
 @media only screen and (min-width: 375px) {
   .post-preview {
     width: 300px;
     height: 400px;
   }
 
+  .post-preview-title {
+    font-size: 30px;
+  }
+
+  .post-preview-excerpt {
+    font-size: 20px;
+  }
+
   .post-preview-nav {
     width: 300px;
   }
+
+  .intro-app-top {
+    max-width: none;
+    margin-bottom: 20px;
+  }
+
 }
 
 @media only screen and (min-width: 480px) {

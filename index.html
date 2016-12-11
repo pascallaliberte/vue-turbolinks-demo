@@ -3,9 +3,15 @@ layout: default
 ---
 
 <div class="home">
+  <p class="intro-app-top">
+    A random article from my reading list
+  </p>
   <div id="post-preview-app">
     <post-preview :posts="posts"></post-preview>
   </div>
+  <p class="intro-app-bottom">
+    
+  </p>
   <script>
   var posts = [
     {% for post in site.posts %}
