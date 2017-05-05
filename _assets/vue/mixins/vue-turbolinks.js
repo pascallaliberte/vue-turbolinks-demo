@@ -15,6 +15,7 @@ export default {
   beforeUpdate() {
     let id = this._turbolinksGetUniqueLabel(this)
     if (!this.$root.hasOwnProperty('_turbolinksState') || undefined === this.$root._turbolinksState[id]) {
+      this.$emit('turbolinks:restored')
       return
     }
     let data = this.$root._turbolinksState[id]
@@ -24,6 +25,7 @@ export default {
       }
     }
     delete this.$root._turbolinksState[id]
+    this.$emit('turbolinks:restored')
   },
   beforeDestroy() {
     if (this !== this.$root) {
