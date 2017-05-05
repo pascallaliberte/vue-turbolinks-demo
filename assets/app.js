@@ -9055,6 +9055,7 @@
 	  beforeUpdate: function beforeUpdate() {
 	    var id = this._turbolinksGetUniqueLabel(this);
 	    if (!this.$root.hasOwnProperty('_turbolinksState') || undefined === this.$root._turbolinksState[id]) {
+	      this.$emit('turbolinks:restored');
 	      return;
 	    }
 	    var data = this.$root._turbolinksState[id];
@@ -9086,6 +9087,7 @@
 	    }
 
 	    delete this.$root._turbolinksState[id];
+	    this.$emit('turbolinks:restored');
 	  },
 	  beforeDestroy: function beforeDestroy() {
 	    if (this !== this.$root) {
